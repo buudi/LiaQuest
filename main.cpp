@@ -36,6 +36,8 @@ class Character{
 
 	void attack();
 
+	void damage();
+
 };
 
 class Lia : public Character{
@@ -64,18 +66,19 @@ class Lia : public Character{
 class Enemy : public Character{
 	private:
 	public:
-}
+};
 
 class Karen : public Enemy{
+	private:
 	public:
 	void specialAttack() const;
-}
+};
 
 class Trap{
 	private:
-	int trapAtk
+	int trapAtk;
 	public:
-}
+};
 
 int main()
 {
