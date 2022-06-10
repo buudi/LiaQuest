@@ -9,6 +9,7 @@ class Character{
 		static const int FILL_COLOR = YELLOW;
 
 		int x, y;
+		int atk, hp;
 
 		// a helper method
 		void draw(int outline, int fill) const{
@@ -18,8 +19,8 @@ class Character{
 		}
 
 	public:
-		Character(int _x=0, int _y=0){
-			x = _x; y=_y;
+		Character(int _x=0, int _y=0, int _atk=100, int _hp=50){
+			x = _x; y=_y; atk = _atk; hp = _hp;
 		}
 
 	void show() const{draw(OUTLINE_COLOR, FILL_COLOR); }
@@ -32,6 +33,31 @@ class Character{
 		x += dx; y += dy;
 		show();
 	}
+
+	void attack();
+
+};
+
+class Lia : public Character{
+	private:
+		static const int SIZE  = 7;
+		static const int OUTLINE_COLOR = WHITE;
+		static const int FILL_COLOR = YELLOW;
+
+		int score;
+		int x, y;
+
+		void draw(int outline, int fill) const{
+			setcolor(outline);
+			setfillstyle(SOLID_FILL, fill);
+			fillellipse(x,y, SIZE, SIZE);
+		}
+
+	public:
+		Lia(int _score = 0, int _x=0, int _y=0){score = _score; x = _x; y = _y;}
+
+	void specialAttack() const;
+
 
 };
 
@@ -86,6 +112,10 @@ int main()
 						lia.move(-10, 0);
 					else if (key == 'D')
 						lia.move(10, 0);
+					else if (key == 'W')
+					    lia.move(0, -10);
+					else if (key == 'S')
+					    lia.move(0, 10);
 				} else {
 					key = getch();
 					cout << "clicked: " << key;
@@ -93,6 +123,10 @@ int main()
 						lia.move(-10, 0);
 					else if(key == 77)
 						lia.move(10, 0);
+					else if(key == 72)
+						lia.move(0, -10);
+					else if(key == 80)
+						lia.move(0, 10);
 				}
 			}
 		}
