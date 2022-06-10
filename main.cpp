@@ -61,6 +61,22 @@ class Lia : public Character{
 
 };
 
+class Enemy : public Character{
+	private:
+	public:
+}
+
+class Karen : public Enemy{
+	public:
+	void specialAttack() const;
+}
+
+class Trap{
+	private:
+	int trapAtk
+	public:
+}
+
 int main()
 {
 	int width = 800;
