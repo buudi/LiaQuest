@@ -76,7 +76,7 @@ class Karen : public Enemy{
 
 class Trap{
 	private:
-	int trapAtk;
+	int tAtk;
 	public:
 };
 
