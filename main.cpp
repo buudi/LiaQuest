@@ -2,7 +2,7 @@
 #include <graphics.h>
 using namespace std;
 
-class Player{
+class Character{
 	private:
 		static const int SIZE  = 50;
 		static const int OUTLINE_COLOR = WHITE;
@@ -18,7 +18,7 @@ class Player{
 		}
 
 	public:
-		Player(int _x=0, int _y=0){
+		Character(int _x=0, int _y=0){
 			x = _x; y=_y;
 		}
 
@@ -54,7 +54,7 @@ int main()
 	char page1[] = "Pretend you are playing lol, press P to go to main menu";
 	settextjustify(CENTER_TEXT, CENTER_TEXT);
 	outtextxy(width/2, height/2, page1);
-	Player lia(0, height / 2);
+	Character lia(0, height / 2);
 	lia.show();
 
 
