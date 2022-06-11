@@ -61,7 +61,7 @@ class Trap{
 		int strength; //damage strength that trap can inflict
 };
 
-class MainMenu{
+class GameMenu{
 	private:
 		static const int DIRECTION = CENTER_TEXT;
 		static const int FONT = SANS_SERIF_FONT;
@@ -104,7 +104,7 @@ int main()
 	setvisualpage(0);
 
 	setactivepage(0);
-	MainMenu menu;
+	GameMenu menu;
 	menu.showMenu();
 
 	setactivepage(1);
