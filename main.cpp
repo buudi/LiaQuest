@@ -9,8 +9,7 @@ class Character{
 		static const int FILL_COLOR = YELLOW;
 
 		int x, y;
-		int atk, hp;
-		int strength; // damage strenth a character can inflict
+		int atk, hp; //atk for damage strength while hp is for health points
 
 		// a helper method
 		void draw(int outline, int fill) const{
@@ -46,8 +45,7 @@ class Lia : public Character{
 		int score;
 
 	void specialAttack() const;
-
-
+		
 };
 
 class Enemy : public Character{
@@ -63,6 +61,38 @@ class Trap{
 		int strength; //damage strength that trap can inflict
 };
 
+class MainMenu{
+	private:
+		static const int DIRECTION = CENTER_TEXT;
+		static const int FONT = SANS_SERIF_FONT;
+
+		// helper methods:
+		void textstyle(){
+			settextjustify(DIRECTION, DIRECTION);
+			settextstyle(FONT, HORIZ_DIR, 3);
+		}
+		void title(){
+			char mainMsg[] = "Lia's Quest";
+			textstyle();
+			outtextxy(400, 200, mainMsg);
+		}
+		void buttons(){
+			textstyle();
+			char startMsg[] = "Play (press C)";
+			outtextxy(395,330, startMsg);
+			rectangle(250, 300, 550, 350);
+
+			char exitMsg[] = "Quit (press ESC twice)";
+			outtextxy(395,410, exitMsg);
+			rectangle(250, 380, 550, 430);
+		}
+	public:
+		void showMenu(){
+			title();
+			buttons();
+		}
+};
+
 int main()
 {
 	int width = 800;
@@ -74,12 +104,11 @@ int main()
 	setvisualpage(0);
 
 	setactivepage(0);
-	char welcome[] = "Welcome to Lia's Quest, press C to continue or escape to quit the game";
-	settextjustify(CENTER_TEXT, CENTER_TEXT);
-	outtextxy(width/2, height/2, welcome);
+	MainMenu menu;
+	menu.showMenu();
 
 	setactivepage(1);
-	char page1[] = "Pretend you are playing lol, press P to go to main menu";
+	char page1[] = "Pretend you are playing lol, use arrow keys, press P to go to main menu";
 	settextjustify(CENTER_TEXT, CENTER_TEXT);
 	outtextxy(width/2, height/2, page1);
 	Character lia(0, height / 2);
