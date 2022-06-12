@@ -155,6 +155,7 @@ int main()
 			}
 		}
 	}
+	cout << "End of the game";
 	getch();
 	return 0;
 }
