@@ -4,6 +4,42 @@
 #include "game.hpp"
 using namespace std;
 
+
+//----------------------------------------------------------
+// Special Attack Class
+
+SpecialAttack::SpecialAttack(int _x, int _y, int _r, int _colorOutline , int _colorFill)
+{
+	x = _x;
+	y = _y;
+	r = _r;
+	colorOutline = _colorOutline;
+	colorFill = _colorFill;
+}
+
+void SpecialAttack::setX(int _x) { x = _x; }
+void SpecialAttack::setY(int _y) { y = _y; }
+void SpecialAttack::setCenter(int _x, int _y) { x = _x; y = _y; }
+void SpecialAttack::setR(int _r) { r = _r; }
+void SpecialAttack::setOutlineColor(int _colorOutline) { colorOutline = _colorOutline; }
+void SpecialAttack::setFillColor(int _colorFill) { colorFill = _colorFill; }
+void SpecialAttack::setColor(int _colorOutline, int _colorFill) { colorOutline = _colorOutline, colorFill = _colorFill; }
+
+
+int SpecialAttack::getX()  { return x; }
+int SpecialAttack::getY()  { return y; }
+int SpecialAttack::getR()  { return r; }
+int SpecialAttack::getOutlineColor()  { return colorOutline; }
+int SpecialAttack::getFillColor()  { return colorFill; }
+
+void SpecialAttack::draw() 
+{
+	setcolor(colorOutline);
+	setfillstyle(SOLID_FILL, colorFill);
+	fillellipse(x, y, r, r);
+}
+
+
 // Character Class
 void Character::draw (int outline, int fill) const{
     setcolor(outline);
@@ -11,7 +47,7 @@ void Character::draw (int outline, int fill) const{
 	fillellipse(x,y, SIZE, SIZE);
 }
 
-Character::Character(int _x, int _y, int _atk, int _hp){
+Character::Character(int _x, int _y, int _atk, int _hp, int _FILL_COLOR){
 	x = _x; y=_y; atk = _atk; hp = _hp;
 }
 
@@ -34,6 +70,23 @@ void Character::move(int dx, int dy){
     y += dy;
 	show();
 }
+int Character::getX(){
+	return x;
+}
+int Character::getHP(){
+	return hp;
+}
+
+void Character::setFillColor(int _FILL_COLOR=YELLOW) 
+{
+	FILL_COLOR = _FILL_COLOR;
+}
+
+void Character::sethp(int _hp)
+{
+	hp = _hp;
+}
+
 
 void Character::attack(){
 
@@ -46,7 +99,7 @@ void Character::damage(){
 // Lia Class
 
 void Lia::specialAttack() const{
-
+	lia->attack();
 }
 //----------------------------------------------------------
 // Enemy CLass
